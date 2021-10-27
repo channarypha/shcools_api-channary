@@ -27,10 +27,10 @@ class PostController extends Controller
         $post = new Post();
         $post->title->$request->title;
         $post->body->$request->body;
-
+        $post->user_id->$request->user_id;
         $post->save();
 
-        return response()->json(['message'=> '']);
+        return response()->json(['message'=> 'Student created !'], 201);
     }
 
     /**
@@ -41,7 +41,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return Post::findOrFail($id);
     }
 
     /**
@@ -53,7 +53,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = new Post();
+        $post->title->$request->title;
+        $post->body->$request->body;
+        $post->user_id->$request->user_id;
+        $post->save();
+
+        return response()->json(['message'=> 'Student updated !'], 200);
     }
 
     /**
@@ -64,6 +70,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Post::destroy($id);
     }
 }
