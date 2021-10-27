@@ -20,7 +20,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//public route
-Route::group(['middleware' => ['auth:sanctum']], functiion{
+//public
+//register = signup / create new account
+Route::post('signup', [UserController::class, 'signup']);
+Route::post('login', [UserController::class, 'login']);
 
+//student
+Route::get('schools', [PostController::class, 'index']);
+Route::get('schools/{id}', [PostController::class, 'show']);
+// private
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    // school
+    Route::post('schools', [PostController::class, 'store']);
+    Route::put('schools/{id}', [PostController::class, 'update']);
+    Route::delete('schools/{id}', [PostController::class, 'destroy']);
+    // user
+    Route::post('logout', [UserController::class, 'logout']);
 });
