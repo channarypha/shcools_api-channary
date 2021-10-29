@@ -47,3 +47,6 @@ class User extends Authenticatable
         return $this->hasMany(post::class);
     }
 }
+
+
+// 4|oEco1y8yCfz9sYtOLH7FnQpif60sF3xzPgHNjcNF
