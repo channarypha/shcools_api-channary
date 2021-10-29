@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 class PostController extends Controller
 {
     /**
@@ -59,7 +59,7 @@ class PostController extends Controller
         $post->user_id->$request->user_id;
         $post->save();
 
-        return response()->json(['message'=> 'Student updated !'], 200);
+        return response()->json(['message'=> 'updated !'], 200);
     }
 
     /**
