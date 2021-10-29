@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        
         return Post::with('user')->get();
     }
 
@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $post = new Post();
         $post-> title = $request-> title;
         $post->body = $request->body;
@@ -46,7 +46,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
         return Post::findOrFail($id);
     }
 
@@ -59,7 +58,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
         $post = Post::findOrFail($id);
         $post-> title = $request-> title;
         $post->body = $request->body;
@@ -77,7 +76,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
         return Post::destroy($id);
     }
 }
