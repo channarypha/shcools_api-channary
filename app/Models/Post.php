@@ -13,6 +13,6 @@ class Post extends Model
 
     public function posts()
     {
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(User::class);
     }
 }

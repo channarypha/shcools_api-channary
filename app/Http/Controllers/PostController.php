@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::get();
+        //
+        return Post::with('user')->get();
     }
 
     /**
@@ -24,13 +26,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $post = new Post();
-        $post->title = $request->title;
+        $post-> title = $request-> title;
         $post->body = $request->body;
-        $post->user_id = $request->user_id;
-        $post->save();
+        $post->user_id = $request-> user_id;
+        $post-> save();
 
-        return response()->json(['message'=> 'Student created !'], 201);
+        return response()-> json('Post created');
+
+        
     }
 
     /**
@@ -41,6 +46,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        //
         return Post::findOrFail($id);
     }
 
@@ -53,13 +59,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = new Post();
-        $post->title = $request->title;
+        //
+        $post = Post::findOrFail($id);
+        $post-> title = $request-> title;
         $post->body = $request->body;
-        $post->user_id = $request->user_id;
-        $post->save();
+        $post->user_id = $request-> user_id;
+        $post-> save();
 
-        return response()->json(['message'=> 'updated !'], 200);
+        return response()-> json('Post Updated');
     }
 
     /**
@@ -70,6 +77,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        //
         return Post::destroy($id);
     }
 }
